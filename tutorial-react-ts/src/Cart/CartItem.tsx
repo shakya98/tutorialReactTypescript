@@ -9,7 +9,7 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-  <Wrapper>
+  <Wrapper className="wrapperCartItem">
     <h3>{item.title}</h3>
     <div className="information">
       <p>Price: ${item.price}</p>
@@ -34,7 +34,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
         +
       </Button>
     </div>
-    <img src={item.image} alt={item.title} />
+    <img src={item.image} alt={item.title} className="imgItem" />
   </Wrapper>
 );
 
