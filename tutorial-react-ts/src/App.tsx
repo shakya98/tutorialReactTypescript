@@ -11,7 +11,7 @@ import Cart from "./Cart/Cart";
 
 export type CartItemType = {
   id: number;
-  category: string;
+  type_number: number;
   description: string;
   image: string;
   price: number;
@@ -20,7 +20,7 @@ export type CartItemType = {
 };
 
 const getProducts = async (): Promise<CartItemType[]> =>
-  await (await fetch("https://fakestoreapi.com/products")).json();
+  await (await fetch("http://127.0.0.1:8000/api/retrieve-data")).json();
 
 const App = () => {
   const [cartOpen, setCartOpen] = useState(false);
