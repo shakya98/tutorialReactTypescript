@@ -29,6 +29,7 @@ const App = () => {
     "products",
     getProducts
   );
+  const [searchTerm, setSearchTerm] = useState("");
   console.log(data);
 
   const getTotalItems = (items: CartItemType[]) =>
@@ -79,12 +80,29 @@ const App = () => {
           <AddShoppingCartIcon />
         </Badge>
       </StyledButton>
+      <input
+        type="text"
+        placeholder="Search.."
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
       <Grid container spacing={3}>
-        {data?.map((item) => (
-          <Grid item key={item.id} xs={12} sm={4}>
-            <Item item={item} handleAddToCart={handleAddToCart} />
-          </Grid>
-        ))}
+        {data
+          ?.filter((item) => {
+            if (searchTerm == "") {
+              return item;
+            } else if (
+              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return item;
+            }
+          })
+          .map((item) => (
+            <Grid item key={item.id} xs={12} sm={4}>
+              <Item item={item} handleAddToCart={handleAddToCart} />
+            </Grid>
+          ))}
       </Grid>
     </Wrapper>
   );
