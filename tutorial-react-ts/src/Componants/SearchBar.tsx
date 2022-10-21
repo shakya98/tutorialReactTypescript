@@ -1,13 +1,11 @@
 import React from "react";
-import { CartItemType } from "../App";
 
 type Props = {
-  item: CartItemType;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Item: React.FC<Props> = ({ item, setSearchTerm }) => (
-    <input
+const SearchBar: React.FC<Props> = ({ setSearchTerm }) => (
+  <input
     type="text"
     placeholder="Search.."
     onChange={(event) => {
@@ -16,4 +14,4 @@ const Item: React.FC<Props> = ({ item, setSearchTerm }) => (
   />
 );
 
-export default Item;
+export default SearchBar;

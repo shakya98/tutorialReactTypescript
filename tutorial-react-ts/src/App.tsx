@@ -8,6 +8,8 @@ import Badge from "@material-ui/core/Badge";
 import { Wrapper, StyledButton } from "./App.styles";
 import Item from "./Item/Item";
 import Cart from "./Cart/Cart";
+import SearchBar from "./Componants/SearchBar";
+import FilterButtons from "./Componants/FilterButtons";
 
 export type CartItemType = {
   id: number;
@@ -81,61 +83,21 @@ const App = () => {
           <AddShoppingCartIcon />
         </Badge>
       </StyledButton>
-      <input
-        type="text"
-        placeholder="Search.."
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
-      <input
-        type="button"
-        value="All"
-        onClick={() => {
-          setFilterItem(0);
-        }}
-      />
-      <input
-        type="button"
-        value="Pizza"
-        onClick={() => {
-          setFilterItem(1);
-        }}
-      />
-      <input
-        type="button"
-        value="Pasta"
-        onClick={() => {
-          setFilterItem(2);
-        }}
-      />
-      <input
-        type="button"
-        value="Desserts"
-        onClick={() => {
-          setFilterItem(3);
-        }}
-      />
-      <input
-        type="button"
-        value="Beverages"
-        onClick={() => {
-          setFilterItem(4);
-        }}
-      />
-      <input
-        type="button"
-        value="Starters"
-        onClick={() => {
-          setFilterItem(6);
-        }}
-      />
+      <SearchBar setSearchTerm={setSearchTerm} />
+      <FilterButtons setFilterItem={setFilterItem} />
+
       <Grid container spacing={3}>
         {data
           ?.filter((item) => {
-            if (filterItem == 0){
+            if (
+              filterItem == 0 &&
+              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
               return item;
-            } else if (item.type_number == filterItem) {
+            } else if (
+              item.type_number == filterItem &&
+              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
               return item;
             }
           })
