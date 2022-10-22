@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
-import { CartItemType } from "../App";
-import { Wrapper } from "../App.styles";
+import { CartItemType } from "../../Pages/Shop";
+import { Wrapper } from "../../App.styles";
 import Item from "../Item/Item";
 
 type Props = {
@@ -24,7 +24,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
           removeFromCart={removeFromCart}
         />
       ))}
-      <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
+      <h2>Total: LKR{calculateTotal(cartItems).toFixed(2)}</h2>
     </Wrapper>
   );
 };

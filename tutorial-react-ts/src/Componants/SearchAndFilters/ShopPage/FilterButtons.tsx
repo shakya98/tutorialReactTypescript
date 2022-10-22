@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "../App.styles";
+import { Wrapper } from "../../../App.styles";
 
 type Props = {
   setFilterItem: React.Dispatch<React.SetStateAction<number>>;
