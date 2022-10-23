@@ -7,11 +7,11 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Layout: React.FunctionComponent<Props> = (props: Props) => {
+const Layout: React.FC<Props> = ({children}) => {
   return (
     <>
       <Header />
-      <div id="page-content-wrapper">{props.children}</div>
+      <div id="page-content-wrapper">{children}</div>
       <Footer />
     </>
   );

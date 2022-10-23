@@ -1,7 +1,6 @@
-import Button from "@material-ui/core/Button";
 import React from "react";
-import { CartItemType } from "../../Pages/Shop";
-import { Wrapper, StyledButton } from "../.././App.styles";
+import { CartItemType } from "../../App";
+import { StyledButton } from "../.././App.styles";
 import Badge from "@material-ui/core/Badge";
 import Drawer from "@material-ui/core/Drawer";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
