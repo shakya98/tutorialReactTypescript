@@ -1,26 +1,14 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Wrapper } from "./App.styles";
-import CartBtn from "./Componants/Cart/CartBtn";
-import NavBar from "./Componants/NavigationBar/NavBar";
-import Home from "./Pages/Home";
-import Shop from "./Pages/Shop";
+import { CartItemType } from "../App";
+import Shop from "./Shop";
 
-export type CartItemType = {
-  id: number;
-  type_number: number;
-  description: string;
-  image: string;
-  price: number;
-  title: string;
-  amount: number;
-};
+interface ShopCompProps {}
 
 const getProducts = async (): Promise<CartItemType[]> =>
   await (await fetch("http://127.0.0.1:8000/api/retrieve-data")).json();
 
-const App = () => {
+const ShopComp: React.FC<ShopCompProps> = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
 
@@ -56,36 +44,15 @@ const App = () => {
       }, [] as CartItemType[])
     );
   };
-
   return (
-    <>
-      <Wrapper>
-        <CartBtn
-          cartItems={cartItems}
-          cartOpen={cartOpen}
-          setCartOpen={setCartOpen}
-          handleAddToCart={handleAddToCart}
-          handleRemoveFromCart={handleRemoveFromCart}
-        />
-      </Wrapper>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="navbar" element={<NavBar />} />
-        <Route
-          path="shop"
-          element={
-            <Shop
-              cartItems={cartItems}
-              cartOpen={cartOpen}
-              setCartOpen={setCartOpen}
-              handleAddToCart={handleAddToCart}
-              handleRemoveFromCart={handleRemoveFromCart}
-            />
-          }
-        />
-      </Routes>
-    </>
+    <Shop
+      cartItems={cartItems}
+      cartOpen={cartOpen}
+      setCartOpen={setCartOpen}
+      handleAddToCart={handleAddToCart}
+      handleRemoveFromCart={handleRemoveFromCart}
+    />
   );
 };
 
-export default App;
+export default ShopComp;

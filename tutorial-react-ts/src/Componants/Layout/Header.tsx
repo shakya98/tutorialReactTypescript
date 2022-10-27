@@ -1,9 +1,10 @@
 // Input.tsx
 import React from "react";
+import NavBar from "../NavigationBar/NavBar";
 
 function Header() {
   return (
-    <p>Header</p>
+    <NavBar/>
   );
 }
 

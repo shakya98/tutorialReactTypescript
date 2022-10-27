@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <Layout>
-    <QueryClientProvider client={client}>
-      <App />
-    </QueryClientProvider>
-  </Layout>
+  <BrowserRouter>
+    <Layout>
+      <QueryClientProvider client={client}>
+        <App />
+      </QueryClientProvider>
+    </Layout>
+  </BrowserRouter>
 );

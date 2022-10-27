@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useQuery } from "react-query";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from "@material-ui/core/Grid";
 import { Wrapper, StyledButton } from ".././App.styles";
 import Item from ".././Componants/Item/Item";
 import SearchBar from ".././Componants/SearchAndFilters/ShopPage/SearchBar";
 import FilterButtons from ".././Componants/SearchAndFilters/ShopPage/FilterButtons";
-import CartBtn from "../Componants/Cart/CartBtn";
 import { CartItemType } from "../App";
+import { Link } from "react-router-dom";
 
 type Props = {
   cartItems: CartItemType[];
@@ -39,6 +39,7 @@ const Shop: React.FC<Props> = ({
 
   return (
     <Wrapper>
+      <h2>Shop</h2>
       <SearchBar setSearchTerm={setSearchTerm} />
       <FilterButtons setFilterItem={setFilterItem} />
 
