@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Wrapper } from "./App.styles";
@@ -20,9 +20,11 @@ export type CartItemType = {
 const getProducts = async (): Promise<CartItemType[]> =>
   await (await fetch("http://127.0.0.1:8000/api/retrieve-data")).json();
 
+const cartFromLS = JSON.parse(localStorage.getItem("cartItems") || "[]")
+
 const App = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
+  const [cartItems, setCartItems] = useState(cartFromLS as CartItemType[]);
 
   const { data, isLoading, error } = useQuery<CartItemType[]>(
     "products",
@@ -56,6 +58,10 @@ const App = () => {
       }, [] as CartItemType[])
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <>

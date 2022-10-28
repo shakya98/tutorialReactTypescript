@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { CartItemType } from "../App";
 import Shop from "./Shop";
@@ -44,6 +44,7 @@ const ShopComp: React.FC<ShopCompProps> = () => {
       }, [] as CartItemType[])
     );
   };
+
   return (
     <Shop
       cartItems={cartItems}
