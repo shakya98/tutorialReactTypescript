@@ -31,6 +31,7 @@ const Shop: React.FC<Props> = ({
     "products",
     getProducts
   );
+  const products = data;
   const [searchTerm, setSearchTerm] = useState("");
   const [filterItem, setFilterItem] = useState(0);
 

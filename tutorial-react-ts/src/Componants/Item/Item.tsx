@@ -1,5 +1,6 @@
 import Button from "@material-ui/core/Button";
 import React from "react";
+import { Link } from "react-router-dom";
 import { CartItemType } from "../../App";
 import { Wrapper } from "../../App.styles";
 
@@ -16,6 +17,7 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => (
       <h3>Rs {item.price}</h3>
       <p>{item.description}</p>
     </div>
+    <Link to={`/shop/${item.id}`}>See Product</Link>
     <Button className="addToCartBtn" onClick={() => handleAddToCart(item)}>
       Add to Cart
     </Button>

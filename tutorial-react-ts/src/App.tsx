@@ -4,8 +4,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Wrapper } from "./App.styles";
 import CartBtn from "./Componants/Cart/CartBtn";
 import NavBar from "./Componants/NavigationBar/NavBar";
+import ErrorPage from "./Pages/Error";
 import Home from "./Pages/Home";
 import Shop from "./Pages/Shop";
+import SingleProduct from "./Pages/SingleProduct";
 
 export type CartItemType = {
   id: number;
@@ -63,6 +65,7 @@ const App = () => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+
   return (
     <>
       <Wrapper>
@@ -89,6 +92,8 @@ const App = () => {
             />
           }
         />
+        <Route path="shop/:productId" element={<SingleProduct handleAddToCart={handleAddToCart} />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
