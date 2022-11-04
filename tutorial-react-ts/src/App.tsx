@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Wrapper } from "./App.styles";
 import CartBtn from "./Componants/Cart/CartBtn";
 import NavBar from "./Componants/NavigationBar/NavBar";
+import Checkout from "./Pages/Checkout";
 import ErrorPage from "./Pages/Error";
 import Home from "./Pages/Home";
 import Shop from "./Pages/Shop";
@@ -22,7 +23,7 @@ export type CartItemType = {
 const getProducts = async (): Promise<CartItemType[]> =>
   await (await fetch("http://127.0.0.1:8000/api/retrieve-data")).json();
 
-const cartFromLS = JSON.parse(localStorage.getItem("cartItems") || "[]")
+const cartFromLS = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
 const App = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -65,7 +66,6 @@ const App = () => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-
   return (
     <>
       <Wrapper>
@@ -92,7 +92,11 @@ const App = () => {
             />
           }
         />
-        <Route path="shop/:productId" element={<SingleProduct handleAddToCart={handleAddToCart} />} />
+        <Route
+          path="shop/:productId"
+          element={<SingleProduct handleAddToCart={handleAddToCart} />}
+        />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
