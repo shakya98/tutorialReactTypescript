@@ -96,7 +96,16 @@ const App = () => {
           path="shop/:productId"
           element={<SingleProduct handleAddToCart={handleAddToCart} />}
         />
-        <Route path="checkout" element={<Checkout />} />
+        <Route
+          path="checkout"
+          element={
+            <Checkout
+              cartItems={cartItems}
+              addToCart={handleAddToCart}
+              removeFromCart={handleRemoveFromCart}
+            />
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

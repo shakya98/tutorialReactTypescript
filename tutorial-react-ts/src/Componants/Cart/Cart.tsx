@@ -1,6 +1,7 @@
 import CartItem from "./CartItem";
 import { CartItemType } from "../../App";
 import { Wrapper } from "../../App.styles";
+import { Link } from "react-router-dom";
 
 type Props = {
   cartItems: CartItemType[];
@@ -24,6 +25,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
         />
       ))}
       <h2>Total: LKR{calculateTotal(cartItems).toFixed(2)}</h2>
+      <Link to="/checkout">Go to Checkout</Link>
     </Wrapper>
   );
 };
